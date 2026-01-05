@@ -13,9 +13,8 @@ const Hero: React.FC = () => {
       </h1>
       
       <p className="text-xl text-slate-400 max-w-2xl mb-10 leading-relaxed">
-        Hi, I'm <span className="text-white font-semibold">Alex Rivera</span>. A Junior Backend Developer specializing in scalable RESTful APIs, high-performance databases, and clean system architecture.
+        Hi, I'm <span className="text-white font-semibold">Zaher Mardini</span>. A Junior Backend Developer specializing in Laravel, MySql.
       </p>
-
       <div className="flex flex-wrap justify-center gap-4">
         <a 
           href="#projects" 
