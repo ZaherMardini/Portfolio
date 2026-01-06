@@ -6,7 +6,7 @@ const About: React.FC = () => {
     <section id="about" className="py-24 px-6 max-w-4xl mx-auto">
       <div className="flex flex-col md:flex-row gap-12 items-center">
         <div className="w-48 h-48 rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 border-2 border-white/10 shrink-0">
-          <img src="./images/quote.jpg" alt="Profile" className="w-full h-full object-cover" />
+          <img src="/images/quote.jpg" alt="Profile" className="w-full h-full object-cover" />
         </div>
         
         <div>
