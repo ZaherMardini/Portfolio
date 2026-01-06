@@ -4,16 +4,16 @@ import { Project } from './types';
 
 export const PROJECTS: Project[] = [
   {
-    title: "SecureAuth API Gateway",
-    description: "A robust REST API built to handle multi-factor authentication and JWT-based session management. Focused on security benchmarks and high-concurrency handling.",
-    techStack: ["PHP 8.2", "Laravel", "MySQL", "Redis", "Docker"],
-    githubUrl: "https://github.com/example/secure-auth-api"
+    title: "E-commerce API (games store)",
+    description: "A RESTful e-commerce backend API built with Laravel, focused on real-world business logic such as guest cart handling, cart merging on authentication.",
+    techStack: ["PHP", "Laravel", "MySQL", "Postman", "Sanctum authentication"],
+    githubUrl: "https://github.com/ZaherMardini/Game-store-API"
   },
   {
-    title: "InventorySync Engine",
-    description: "Real-time inventory synchronization microservice for e-commerce platforms. Features automated stock reconciliation and high-performance SQL query optimization.",
-    techStack: ["PHP", "MySQL", "Postman", "Git", "RESTful Patterns"],
-    githubUrl: "https://github.com/example/inventory-sync"
+    title: "Medium clone",
+    description: "A simple imitation of the blog site Medium, built with Laravel and Blade templates. This project demonstrates core backend development skills.",
+    techStack: ["PHP", "Sqlite", "Tailwind CSS", "Breeze toolkit", "Alpine.js"],
+    githubUrl: "https://github.com/ZaherMardini/Medium_clone"
   }
 ];
 
@@ -24,7 +24,6 @@ export const SKILLS = [
   "REST APIs",
   "Git",
   "Postman",
-  "Unit Testing",
   "Database Design",
   "API Documentation"
 ];

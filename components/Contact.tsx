@@ -12,18 +12,18 @@ const Contact: React.FC = () => {
       
       <div className="grid sm:grid-cols-2 gap-6 max-w-xl mx-auto">
         <a 
-          href="mailto:hello@example.com" 
+          href="mailto:zaher.mardini.dev@gmail.com" 
           className="flex flex-col items-center p-8 bg-blue-600/10 border border-blue-500/20 rounded-2xl hover:bg-blue-600/20 transition-all group"
         >
           <div className="p-4 bg-blue-600 rounded-full mb-4 shadow-lg shadow-blue-600/20 group-hover:scale-110 transition-transform">
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
           </div>
           <span className="text-white font-semibold">Email Me</span>
-          <span className="text-slate-400 text-sm mt-1">hello@example.com</span>
+          <span className="text-slate-400 text-sm mt-1">zaher.mardini.dev@gmail.com</span>
         </a>
 
         <a 
-          href="https://linkedin.com" 
+          href="https://www.linkedin.com/in/zaher-mardini-7464ab39a/" 
           target="_blank" 
           className="flex flex-col items-center p-8 bg-slate-800/30 border border-white/5 rounded-2xl hover:bg-slate-800/50 transition-all group"
         >

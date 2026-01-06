@@ -6,7 +6,7 @@ const About: React.FC = () => {
     <section id="about" className="py-24 px-6 max-w-4xl mx-auto">
       <div className="flex flex-col md:flex-row gap-12 items-center">
         <div className="w-48 h-48 rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 border-2 border-white/10 shrink-0">
-          <img src="https://picsum.photos/seed/dev/400/400" alt="Profile" className="w-full h-full object-cover" />
+          <img src="./images/quote.jpg" alt="Profile" className="w-full h-full object-cover" />
         </div>
         
         <div>
@@ -15,16 +15,15 @@ const About: React.FC = () => {
           </h2>
           <div className="space-y-4 text-slate-400 leading-relaxed text-lg">
             <p>
-              I am a software engineer with a strong foundation in <span className="text-blue-400">backend development</span>. 
+              I'm an aspiring Laravel backend developer with a strong foundation in <span className="text-blue-400">backend development</span>. 
               My journey began with a curiosity about how data flows across the web, leading me to master PHP and the Laravel ecosystem.
             </p>
             <p>
-              I focus on writing clean, maintainable code and building APIs that are both performant and secure. 
-              I enjoy solving complex architectural problems and optimizing database schemas to handle large-scale data efficiently.
+              I focus on writing clean, maintainable code, 
+              I enjoy solving complex architectural problems and optimizing database schemas to ensure that modern best practices are applied.
             </p>
-            <p>
-              Beyond coding, I am an advocate for thorough documentation and collaborative git-based workflows. 
-              I believe that a great backend isn't just about speed, but also about stability and scalability.
+            <p> 
+              I believe that a great backend isn't just about speed but also about stability and scalability.
             </p>
           </div>
         </div>
