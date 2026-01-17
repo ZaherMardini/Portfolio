@@ -5,7 +5,7 @@ import { Project } from './types';
 export const PROJECTS: Project[] = [
   {
     title: "ZGit (in progress)",
-    description: "Simplified Git system from scratch, focusing on file system persistence, content-addressable storage, hashing, and command-line tooling.",
+    description: "A low-level implementation of core Git functionality built from scratch. The project recreates essential Git internals such as object storage (blobs, trees, commits), SHA-1 hashing, repository initialization, and basic commands like init, add, commit, and cat-file",
     techStack: ["C++"],
     githubUrl: "#"
   },
