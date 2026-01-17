@@ -4,6 +4,12 @@ import { Project } from './types';
 
 export const PROJECTS: Project[] = [
   {
+    title: "ZGit (in progress)",
+    description: "Simplified Git system from scratch, focusing on file system persistence, content-addressable storage, hashing, and command-line tooling, showcasing strong fundamentals in backend systems and data structures.",
+    techStack: ["C++"],
+    githubUrl: "#"
+  },
+  {
     title: "E-commerce API (games store)",
     description: "A RESTful e-commerce backend API built with Laravel, focused on real-world business logic such as guest cart handling, cart merging on authentication.",
     techStack: ["PHP", "Laravel", "MySQL", "Postman", "Sanctum authentication"],
