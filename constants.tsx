@@ -4,12 +4,6 @@ import { Project } from './types';
 
 export const PROJECTS: Project[] = [
   {
-    title: "ZGit (in progress)",
-    description: "A low-level implementation of core Git functionality built from scratch. The project recreates essential Git internals such as object storage (blobs, trees, commits), SHA-1 hashing, repository initialization, and basic commands like init, add, commit, and cat-file",
-    techStack: ["C++"],
-    githubUrl: "#"
-  },
-  {
     title: "E-commerce API (games store)",
     description: "A RESTful e-commerce backend API built with Laravel, focused on real-world business logic such as guest cart handling, cart merging on authentication.",
     techStack: ["PHP", "Laravel", "MySQL", "Postman", "Sanctum authentication"],
@@ -20,7 +14,13 @@ export const PROJECTS: Project[] = [
     description: "A simple imitation of the blog site Medium, built with Laravel and Blade templates. This project demonstrates core backend development skills.",
     techStack: ["PHP", "Sqlite", "Tailwind CSS", "Breeze toolkit", "Alpine.js"],
     githubUrl: "https://github.com/ZaherMardini/Medium_clone"
-  }
+  },
+  {
+    title: "ZGit (in progress)",
+    description: "A low-level implementation of core Git functionality built from scratch. The project recreates essential Git internals such as object storage (blobs, trees, commits), SHA-1 hashing, repository initialization, and basic commands like init, add, commit, and cat-file",
+    techStack: ["C++"],
+    githubUrl: "https://github.com/ZaherMardini/codeCrafters_git"
+  },
 ];
 
 export const SKILLS = [
