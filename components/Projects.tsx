@@ -1,8 +1,20 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { PROJECTS } from '../constants.tsx';
 
 const Projects: React.FC = () => {
+  const [expandedProjects, setExpandedProjects] = useState<Set<number>>(new Set());
+
+  const toggleDescription = (index: number) => {
+    const newExpanded = new Set(expandedProjects);
+    if (newExpanded.has(index)) {
+      newExpanded.delete(index);
+    } else {
+      newExpanded.add(index);
+    }
+    setExpandedProjects(newExpanded);
+  };
+
   return (
     <section id="projects" className="py-24 px-6 max-w-6xl mx-auto">
       <h2 className="text-3xl font-bold text-white mb-12 flex items-center gap-3">
@@ -35,7 +47,12 @@ const Projects: React.FC = () => {
             <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
               {project.title}
             </h3>
-            <p className="text-slate-400 mb-8 line-clamp-3 leading-relaxed">
+            <p 
+              className={`text-slate-400 mb-8 leading-relaxed cursor-pointer transition-all duration-300 ${
+                expandedProjects.has(index) ? '' : 'line-clamp-3'
+              }`}
+              onClick={() => toggleDescription(index)}
+            >
               {project.description}
             </p>
             
