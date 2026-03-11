@@ -10,16 +10,10 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/ZaherMardini/Game-store-API"
   },
   {
-    title: "Medium clone",
-    description: "A simple imitation of the blog site Medium, built with Laravel and Blade templates. This project demonstrates core backend development skills.",
-    techStack: ["PHP", "Sqlite", "Tailwind CSS", "Breeze toolkit", "Alpine.js"],
-    githubUrl: "https://github.com/ZaherMardini/Medium_clone"
-  },
-  {
-    title: "ZGit (in progress)",
-    description: "A low-level implementation of core Git functionality built from scratch. The project recreates essential Git internals such as object storage (blobs, trees, commits), SHA-1 hashing, repository initialization, and basic commands like init, add, commit, and cat-file",
-    techStack: ["C++"],
-    githubUrl: "https://github.com/ZaherMardini/codeCrafters_git"
+    title: "AutoLicence (in progress)",
+    description: "A Laravel-based web application that simulates the workflow of a driving license authority. The system allows administrators to manage applicants, process license-related services, and schedule driving tests.",
+    techStack: ["PHP", "Laravel", "Tailwind CSS", "Breeze toolkit", "Alpine.js", "MySql"],
+    githubUrl: "https://github.com/ZaherMardini/AutoLlicence"
   },
 ];
 
