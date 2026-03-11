@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
           View Projects
         </a>
         <a 
-          href="/Zaher_Mardini.pdf" 
+          href="/Zaher_Mardini_CV.pdf" 
           download 
           className="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-lg border border-white/10 transition-all flex items-center gap-2 active:scale-95"
         >
