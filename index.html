@@ -1,45 +1,515 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Junior Backend Developer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        ::selection {
-            background-color: #3b82f6;
-            color: white;
-        }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react-dom": "https://esm.sh/react-dom@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "vite": "https://esm.sh/vite@^7.3.0",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zaher — Backend Developer</title>
+<meta name="description" content="Backend Developer specializing in Laravel, PostgreSQL, and API architecture.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            950: '#05070d',
+            900: '#0a0e1a',
+            850: '#0d1220',
+            800: '#111827',
+            700: '#1a2236',
+            600: '#242e46',
+          },
+          blue: {
+            accent: '#3b82f6',
+            soft: '#60a5fa',
+            dim: '#1e3a6d',
+          },
+          ink: {
+            0: '#e9edf6',
+            1: '#aeb6c9',
+            2: '#7b8399',
+          }
+        },
+        fontFamily: {
+          display: ['Space Grotesk', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+      }
+    }
   }
-}
 </script>
-<link rel="stylesheet" href="/index.css">
+
+<style>
+  html { background-color: #05070d; }
+  body {
+    background-color: #05070d;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(96,165,250,0.09) 1px, transparent 0);
+    background-size: 28px 28px;
+  }
+  ::selection { background: #1e3a6d; color: #e9edf6; }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-up { opacity: 1 !important; transform: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+
+  .glow-border {
+    position: relative;
+  }
+  .glow-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(59,130,246,0.5), rgba(59,130,246,0) 45%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid #60a5fa;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .schema-key { color: #60a5fa; }
+  .schema-type { color: #7b8399; }
+  .schema-string { color: #a7d0ff; }
+</style>
 </head>
-<body class="bg-[#020617] text-slate-200 antialiased selection:bg-blue-500/30 selection:text-blue-200">
-    <div id="root"></div>
-    <!-- Explicitly loading the entry point for local development -->
-    <script type="module" src="./index.tsx"></script>
-<script type="module" src="/index.tsx"></script>
+
+<body class="font-body text-ink-0 antialiased">
+
+  <!-- ============ NAV ============ -->
+  <header class="fixed top-0 inset-x-0 z-50 border-b border-navy-700/60 bg-navy-950/80 backdrop-blur-md">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#home" class="font-mono text-sm text-ink-0 tracking-tight">
+        <span class="text-blue-soft">&gt;</span> zaher<span class="text-ink-2">.dev</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 font-mono text-[13px] text-ink-1">
+        <a href="#about" class="hover:text-blue-soft transition-colors">about</a>
+        <a href="#projects" class="hover:text-blue-soft transition-colors">projects</a>
+        <a href="#stack" class="hover:text-blue-soft transition-colors">stack</a>
+        <a href="#contact" class="hover:text-blue-soft transition-colors">contact</a>
+      </div>
+
+      <a href="#contact"
+         class="hidden md:inline-flex items-center gap-2 rounded-full border border-blue-accent/40 px-4 py-1.5 text-[13px] font-mono text-blue-soft hover:bg-blue-accent/10 transition-colors">
+        say hello
+      </a>
+
+      <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false" class="md:hidden text-ink-0 p-2">
+        <svg id="icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden border-t border-navy-700/60 bg-navy-950/95 px-6 py-4 space-y-4 font-mono text-sm">
+      <a href="#about" class="block text-ink-1 hover:text-blue-soft">about</a>
+      <a href="#projects" class="block text-ink-1 hover:text-blue-soft">projects</a>
+      <a href="#stack" class="block text-ink-1 hover:text-blue-soft">stack</a>
+      <a href="#contact" class="block text-blue-soft">contact →</a>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="home" class="relative pt-40 pb-28 px-6 overflow-hidden">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.15fr_0.85fr] gap-16 items-center">
+
+      <div class="fade-up">
+        <p class="font-mono text-[13px] text-blue-soft mb-5 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-blue-soft animate-pulse"></span>
+          available for backend / Laravel work
+        </p>
+
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.08] tracking-tight text-ink-0">
+          I build the part of the
+          app <span class="text-blue-soft">users never see</span> —
+          and make sure it never breaks.
+        </h1>
+
+        <p class="mt-6 text-ink-1 text-lg max-w-xl leading-relaxed">
+          Backend developer focused on Laravel, PostgreSQL, and clean API design.
+          I care less about frameworks and more about the business rules underneath —
+          the constraints, edge cases, and data integrity that actually make a system trustworthy.
+        </p>
+
+        <div class="mt-9 flex flex-wrap items-center gap-4">
+          <a href="#projects"
+             class="inline-flex items-center gap-2 rounded-lg bg-blue-accent px-5 py-3 text-sm font-medium text-navy-950 hover:bg-blue-soft transition-colors">
+            View projects
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#contact"
+             class="inline-flex items-center gap-2 rounded-lg border border-navy-600 px-5 py-3 text-sm font-medium text-ink-0 hover:border-blue-accent/60 hover:text-blue-soft transition-colors">
+            Get in touch
+          </a>
+        </div>
+      </div>
+
+      <!-- Signature element: profile rendered as a DB table row -->
+      <div class="fade-up">
+        <div class="glow-border rounded-xl bg-navy-850 border border-navy-700 shadow-2xl shadow-black/40 overflow-hidden">
+          <div class="flex items-center gap-1.5 px-4 py-3 border-b border-navy-700 bg-navy-900/60">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]/70"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]/70"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]/70"></span>
+            <span class="ml-3 font-mono text-xs text-ink-2">developers — schema</span>
+          </div>
+          <div class="p-5 font-mono text-[13px] leading-7 overflow-x-auto">
+<pre><span class="text-ink-2">Table:</span> <span class="schema-key">developers</span>
+
+  <span class="schema-key">id</span>          <span class="schema-type">uuid</span>          <span class="text-ink-2">// primary key</span>
+  <span class="schema-key">name</span>        <span class="schema-type">string</span>        <span class="schema-string">"Zaher"</span> <span class="text-ink-2">// TODO: last name</span>
+  <span class="schema-key">role</span>        <span class="schema-type">string</span>        <span class="schema-string">"Backend Developer"</span>
+  <span class="schema-key">focus</span>       <span class="schema-type">enum</span>          <span class="schema-string">'laravel', 'postgresql', 'apis'</span>
+  <span class="schema-key">location</span>    <span class="schema-type">string</span>        <span class="schema-string">"—"</span> <span class="text-ink-2">// TODO</span>
+  <span class="schema-key">status</span>      <span class="schema-type">boolean</span>       <span class="text-blue-soft">true</span> <span class="text-ink-2">// open to work</span>
+  <span class="schema-key">learns_by</span>   <span class="schema-type">string</span>        <span class="schema-string">"understanding why, not memorizing how"</span></pre>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="px-6 py-24 border-t border-navy-700/60">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-[0.4fr_0.6fr] gap-12">
+      <div class="fade-up">
+        <p class="font-mono text-xs text-blue-soft mb-3">// about</p>
+        <h2 class="font-display text-3xl font-semibold text-ink-0">How I work</h2>
+      </div>
+
+      <div class="fade-up space-y-5 text-ink-1 leading-relaxed">
+        <p>
+          I'm a backend developer working primarily with <span class="text-ink-0">Laravel</span> and
+          <span class="text-ink-0">PostgreSQL</span>, currently contributing as a volunteer developer on a
+          team building an <span class="text-ink-0">AI-powered Arabic study assistant</span>. That project
+          is where most of my recent hands-on work lives — onboarding onto an existing codebase, untangling
+          UUID primary keys with Eloquent and Sanctum, and structuring file uploads and business logic around
+          a proper service/repository separation.
+        </p>
+        <p>
+          I like understanding the <span class="text-ink-0">"why"</span> behind a pattern before I use it —
+          not just copying a solution, but knowing what problem it actually solves. That shows in how I
+          approach new codebases: read the schema, read the relationships, understand the constraints, then
+          write code that respects them.
+        </p>
+        <p>
+          Outside of core development, I've worked through Git internals, team branching workflows
+          (feature → develop → main), and database design from the ground up — including full ERDs for
+          multi-table schemas before a single line of backend code was written.
+        </p>
+
+        <div class="pt-2 flex flex-wrap gap-3">
+          <span class="font-mono text-xs px-3 py-1.5 rounded-full border border-navy-600 text-ink-1">🇸🇾 / 🇬🇧 bilingual context</span>
+          <span class="font-mono text-xs px-3 py-1.5 rounded-full border border-navy-600 text-ink-1">team-based Git workflow</span>
+          <span class="font-mono text-xs px-3 py-1.5 rounded-full border border-navy-600 text-ink-1">Linux Mint</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="px-6 py-24 border-t border-navy-700/60 bg-navy-900/40">
+    <div class="max-w-6xl mx-auto">
+      <div class="fade-up mb-14">
+        <p class="font-mono text-xs text-blue-soft mb-3">// projects</p>
+        <h2 class="font-display text-3xl font-semibold text-ink-0">Selected work</h2>
+        <p class="mt-3 text-ink-1 max-w-2xl">
+          Backend systems with real business constraints — not CRUD demos. Each one below is built
+          around the rules a real domain actually needs.
+        </p>
+      </div>
+
+      <div class="grid gap-6">
+
+        <!-- Project 1: Arabic AI Study Assistant -->
+        <article class="fade-up glow-border rounded-xl border border-navy-700 bg-navy-850 p-7 md:p-8">
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+            <div>
+              <p class="font-mono text-xs text-ink-2 mb-1">project_01</p>
+              <h3 class="font-display text-xl font-semibold text-ink-0">Arabic Study Assistant</h3>
+            </div>
+            <div class="flex gap-3 font-mono text-xs">
+              <!-- TODO: replace with real links -->
+              <a href="#" class="text-ink-2 hover:text-blue-soft transition-colors">repo →</a>
+              <a href="#" class="text-ink-2 hover:text-blue-soft transition-colors">demo →</a>
+            </div>
+          </div>
+          <p class="text-ink-1 leading-relaxed mb-5">
+            An AI-powered study assistant for Arabic-language learning, built collaboratively with a small
+            team of frontend developers and a team lead. My role covers the backend: user sessions, document
+            handling, and the data model tying study content, quizzes, and scoring together. I contributed to
+            the schema design (14-table ERD) and independently built parts of the request/response flow,
+            following a structured three-branch Git workflow across the team.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="font-mono text-[11px] px-2.5 py-1 rounded bg-navy-700/60 text-blue-soft/90 border border-navy-600">Laravel</span>
+            <span class="font-mono text-[11px] px-2.5 py-1 rounded bg-navy-700/60 text-blue-soft/90 border border-navy-600">PostgreSQL</span>
+            <span class="font-mono text-[11px] px-2.5 py-1 rounded bg-navy-700/60 text-blue-soft/90 border border-navy-600">Sanctum</span>
+            <span class="font-mono text-[11px] px-2.5 py-1 rounded bg-navy-700/60 text-blue-soft/90 border border-navy-600">Repository Pattern</span>
+            <span class="font-mono text-[11px] px-2.5 py-1 rounded bg-navy-700/60 text-blue-soft/90 border border-navy-600">Google OAuth</span>
+          </div>
+        </article>
+
+        <!-- Project 2: Driving License Management Platform -->
+        <article class="fade-up glow-border rounded-xl border border-navy-700 bg-navy-850 p-7 md:p-8">
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+            <div>
+              <p class="font-mono text-xs text-ink-2 mb-1">project_02</p>
+              <h3 class="font-display text-xl font-semibold text-ink-0">Driving License Management Platform</h3>
+            </div>
+            <div class="flex gap-3 font-mono text-xs">
+              <!-- TODO: replace with real links -->
+              <a href="#" class="text-ink-2 hover:text-blue-soft transition-colors">repo →</a>
+              <a href="#" class="text-ink-2 hover:text-blue-soft transition-colors">demo →</a>
+            </div>
+          </div>
+          <p class="text-ink-1 leading-relaxed mb-5">
+            A backend platform simulating a government agency's licensing system — replacing paper processes
+            with a digital workflow for issuing, renewing, and managing driving licenses. It enforces real
+            regulatory logic: category-specific age eligibility, sequential exam requirements (vision →
+            written → practical) before issuance, exactly one active license per category per person, and
+            automatic driver-record linking on first issuance. Blocked or expired licenses are correctly
+            excluded from renewal and replacement flows, and every hold/release action is logged with the
+            responsible user, date, and any fine paid — built for auditability, not just functionality.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="font-mono text-[11px] px-2.5 py-1 rounded bg-navy-700/60 text-blue-soft/90 border border-navy-600">Laravel</span>
+            <span class="font-mono text-[11px] px-2.5 py-1 rounded bg-navy-700/60 text-blue-soft/90 border border-navy-600">PostgreSQL</span>
+            <span class="font-mono text-[11px] px-2.5 py-1 rounded bg-navy-700/60 text-blue-soft/90 border border-navy-600">Role-based access</span>
+            <span class="font-mono text-[11px] px-2.5 py-1 rounded bg-navy-700/60 text-blue-soft/90 border border-navy-600">Audit logging</span>
+          </div>
+        </article>
+
+        <!-- Project 3: Gaming Store E-commerce API -->
+        <article class="fade-up glow-border rounded-xl border border-navy-700 bg-navy-850 p-7 md:p-8">
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+            <div>
+              <p class="font-mono text-xs text-ink-2 mb-1">project_03</p>
+              <h3 class="font-display text-xl font-semibold text-ink-0">Gaming Store — E-commerce API</h3>
+            </div>
+            <div class="flex gap-3 font-mono text-xs">
+              <!-- TODO: replace with real links -->
+              <a href="#" class="text-ink-2 hover:text-blue-soft transition-colors">repo →</a>
+              <a href="#" class="text-ink-2 hover:text-blue-soft transition-colors">demo →</a>
+            </div>
+          </div>
+          <p class="text-ink-1 leading-relaxed mb-5">
+            A Laravel API simulating a real online store, built to explore the parts of e-commerce that
+            actually matter under the hood. Guests can browse and build a cart with no account, tracked via
+            a <code class="font-mono text-blue-soft/90">guest_token</code>; on login, the system decides
+            whether to merge that cart into an existing one or attach it directly — handling both cases
+            cleanly instead of just overwriting data. Checkout requires authentication, and prices are
+            snapshotted at order creation so a later admin price change can never retroactively affect a
+            placed order. Orders can be cancelled or returned with full status tracking.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="font-mono text-[11px] px-2.5 py-1 rounded bg-navy-700/60 text-blue-soft/90 border border-navy-600">Laravel</span>
+            <span class="font-mono text-[11px] px-2.5 py-1 rounded bg-navy-700/60 text-blue-soft/90 border border-navy-600">REST API</span>
+            <span class="font-mono text-[11px] px-2.5 py-1 rounded bg-navy-700/60 text-blue-soft/90 border border-navy-600">Guest sessions</span>
+            <span class="font-mono text-[11px] px-2.5 py-1 rounded bg-navy-700/60 text-blue-soft/90 border border-navy-600">Order state machine</span>
+          </div>
+        </article>
+
+        <!-- Placeholder Project 4 -->
+        <article class="fade-up rounded-xl border border-dashed border-navy-600 bg-transparent p-7 md:p-8 flex flex-col items-start justify-center min-h-[160px]">
+          <p class="font-mono text-xs text-ink-2 mb-2">project_04</p>
+          <p class="text-ink-1">
+            <span class="text-ink-0 font-medium">Add your next project here.</span>
+            Business logic summary first, tech stack second — same format as above.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STACK ============ -->
+  <section id="stack" class="px-6 py-24 border-t border-navy-700/60">
+    <div class="max-w-6xl mx-auto">
+      <div class="fade-up mb-12">
+        <p class="font-mono text-xs text-blue-soft mb-3">// stack</p>
+        <h2 class="font-display text-3xl font-semibold text-ink-0">Tools I reach for</h2>
+      </div>
+
+      <div class="fade-up grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        <!-- Update / trim this list freely -->
+        <div class="rounded-lg border border-navy-700 bg-navy-850 px-4 py-3.5 text-center font-mono text-sm text-ink-1 hover:border-blue-accent/50 hover:text-blue-soft transition-colors">Laravel</div>
+        <div class="rounded-lg border border-navy-700 bg-navy-850 px-4 py-3.5 text-center font-mono text-sm text-ink-1 hover:border-blue-accent/50 hover:text-blue-soft transition-colors">PostgreSQL</div>
+        <div class="rounded-lg border border-navy-700 bg-navy-850 px-4 py-3.5 text-center font-mono text-sm text-ink-1 hover:border-blue-accent/50 hover:text-blue-soft transition-colors">Eloquent ORM</div>
+        <div class="rounded-lg border border-navy-700 bg-navy-850 px-4 py-3.5 text-center font-mono text-sm text-ink-1 hover:border-blue-accent/50 hover:text-blue-soft transition-colors">Sanctum</div>
+        <div class="rounded-lg border border-navy-700 bg-navy-850 px-4 py-3.5 text-center font-mono text-sm text-ink-1 hover:border-blue-accent/50 hover:text-blue-soft transition-colors">REST APIs</div>
+        <div class="rounded-lg border border-navy-700 bg-navy-850 px-4 py-3.5 text-center font-mono text-sm text-ink-1 hover:border-blue-accent/50 hover:text-blue-soft transition-colors">Repository Pattern</div>
+        <div class="rounded-lg border border-navy-700 bg-navy-850 px-4 py-3.5 text-center font-mono text-sm text-ink-1 hover:border-blue-accent/50 hover:text-blue-soft transition-colors">Git</div>
+        <div class="rounded-lg border border-navy-700 bg-navy-850 px-4 py-3.5 text-center font-mono text-sm text-ink-1 hover:border-blue-accent/50 hover:text-blue-soft transition-colors">Linux</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="px-6 py-24 border-t border-navy-700/60 bg-navy-900/40">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-14">
+
+      <div class="fade-up">
+        <p class="font-mono text-xs text-blue-soft mb-3">// contact</p>
+        <h2 class="font-display text-3xl font-semibold text-ink-0 mb-4">Let's talk</h2>
+        <p class="text-ink-1 leading-relaxed mb-8 max-w-md">
+          Open to backend roles, freelance work, or just a conversation about Laravel and system design.
+          The form sends straight to my inbox — or reach me directly below.
+        </p>
+
+        <div class="space-y-3 font-mono text-sm">
+          <!-- TODO: replace all placeholders with real links -->
+          <a href="mailto:your.email@example.com" class="flex items-center gap-3 text-ink-1 hover:text-blue-soft transition-colors group">
+            <span class="w-8 h-8 rounded-md border border-navy-600 flex items-center justify-center group-hover:border-blue-accent/60">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
+            </span>
+            your.email@example.com
+          </a>
+          <a href="https://github.com/your-username" target="_blank" rel="noopener" class="flex items-center gap-3 text-ink-1 hover:text-blue-soft transition-colors group">
+            <span class="w-8 h-8 rounded-md border border-navy-600 flex items-center justify-center group-hover:border-blue-accent/60">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.27 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.94-2.35 4.8-4.58 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.03 10.03 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+            </span>
+            github.com/your-username
+          </a>
+          <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener" class="flex items-center gap-3 text-ink-1 hover:text-blue-soft transition-colors group">
+            <span class="w-8 h-8 rounded-md border border-navy-600 flex items-center justify-center group-hover:border-blue-accent/60">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            </span>
+            linkedin.com/in/your-profile
+          </a>
+          <a href="https://wa.me/000000000" target="_blank" rel="noopener" class="flex items-center gap-3 text-ink-1 hover:text-blue-soft transition-colors group">
+            <span class="w-8 h-8 rounded-md border border-navy-600 flex items-center justify-center group-hover:border-blue-accent/60">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.1.93.94-3-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.15c-.25-.12-1.45-.7-1.68-.79-.22-.08-.39-.12-.55.13-.16.24-.63.79-.78.95-.14.16-.29.18-.53.06-.25-.12-1.04-.38-1.98-1.2-.73-.65-1.22-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.24.25-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.5.58.19 1.11.16 1.53.1.47-.07 1.45-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28z"/></svg>
+            </span>
+            wa.me/000000000
+          </a>
+        </div>
+      </div>
+
+      <div class="fade-up">
+        <form id="contact-form" class="rounded-xl border border-navy-700 bg-navy-850 p-6 md:p-8 space-y-5">
+          <div>
+            <label for="name" class="block font-mono text-xs text-ink-2 mb-2">your name</label>
+            <input type="text" id="name" name="name" required
+              class="w-full rounded-lg bg-navy-900 border border-navy-600 px-4 py-3 text-sm text-ink-0 placeholder:text-ink-2 focus:border-blue-accent/70 outline-none transition-colors"
+              placeholder="Jane Doe">
+          </div>
+          <div>
+            <label for="subject" class="block font-mono text-xs text-ink-2 mb-2">subject</label>
+            <input type="text" id="subject" name="subject" required
+              class="w-full rounded-lg bg-navy-900 border border-navy-600 px-4 py-3 text-sm text-ink-0 placeholder:text-ink-2 focus:border-blue-accent/70 outline-none transition-colors"
+              placeholder="Backend role at...">
+          </div>
+          <div>
+            <label for="message" class="block font-mono text-xs text-ink-2 mb-2">message</label>
+            <textarea id="message" name="message" rows="5" required
+              class="w-full rounded-lg bg-navy-900 border border-navy-600 px-4 py-3 text-sm text-ink-0 placeholder:text-ink-2 focus:border-blue-accent/70 outline-none transition-colors resize-none"
+              placeholder="Hi Zaher, I'd like to talk about..."></textarea>
+          </div>
+          <button type="submit"
+            class="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-blue-accent px-5 py-3 text-sm font-medium text-navy-950 hover:bg-blue-soft transition-colors">
+            Send message
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg>
+          </button>
+          <p class="text-xs text-ink-2 text-center">Opens your email app with this message pre-filled — nothing is sent from this page.</p>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="px-6 py-10 border-t border-navy-700/60">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-ink-2">
+      <p>© <span id="year"></span> Zaher. Built with Tailwind CSS.</p>
+      <p class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-soft"></span>
+        status: <span class="text-blue-soft">open to work</span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    menuBtn.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(isHidden));
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      });
+    });
+
+    // Fade-up on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Contact form -> mailto
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      // TODO: replace with your real email address
+      const to = 'your.email@example.com';
+      const mailSubject = encodeURIComponent(subject || `Message from ${name}`);
+      const mailBody = encodeURIComponent(`${message}\n\n— ${name}`);
+
+      window.location.href = `mailto:${to}?subject=${mailSubject}&body=${mailBody}`;
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>
