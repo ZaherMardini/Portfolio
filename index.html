@@ -138,13 +138,11 @@
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      background: repeating-linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.012) 0px,
-        rgba(255, 255, 255, 0.012) 1px,
-        transparent 1px,
-        transparent 3px
-      );
+      background: repeating-linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.012) 0px,
+          rgba(255, 255, 255, 0.012) 1px,
+          transparent 1px,
+          transparent 3px);
       mix-blend-mode: overlay;
     }
 
@@ -257,14 +255,15 @@
             <span class="ml-3 font-mono text-xs text-ink-2">developers — schema</span>
           </div>
           <div class="p-5 font-mono text-[13px] leading-7 overflow-x-auto">
+            <pre><span class="text-ink-2">Zaher@Mardini:~$ </span> <span class="schema-key">php artisan:make-passionate-dev --name=Zaher_Mardini</span>
             <pre><span class="text-ink-2">Table:</span> <span class="schema-key">developers</span>
 
-  <span class="schema-key">id</span>          <span class="schema-type">id</span>            <span class="text-ink-2">// primary key</span>
-  <span class="schema-key">name</span>        <span class="schema-type">string</span>        <span class="schema-string">"Zaher Mardini"</span>
+  <span class="schema-key">id</span>          <span class="schema-type">UUID</span>          <span class="schema-string">a3f1c9e2-7b4d-5a11-9f3e-2d8b6c1a4f0e</span>
+  <span class="schema-key">name</span>        <span class="schema-type">string</span>        <span class="text-blue-soft">"Zaher Mardini"</span>
   <span class="schema-key">role</span>        <span class="schema-type">string</span>        <span class="schema-string">"Backend Developer"</span>
-  <span class="schema-key">focus</span>       <span class="schema-type">enum</span>          <span class="schema-string">'laravel', 'postgresql', 'mysql', 'apis'</span>
+  <span class="schema-key">focus</span>       <span class="schema-type">enum</span>          <span class="schema-string">"laravel", "postgresql", "mysql", "apis"</span>
   <span class="schema-key">location</span>    <span class="schema-type">string</span>        <span class="schema-string">"Damascus"</span>
-  <span class="schema-key">status</span>      <span class="schema-type">enum</span>          <span class="text-blue-soft">'open to work'</span>
+  <span class="schema-key">status</span>      <span class="schema-type">enum</span>          <span class="schema-string">"open to work"</span>
   <span class="schema-key">learns_by</span>   <span class="schema-type">string</span>        <span class="schema-string">"Obsessing over the why, instead of memorizing the how."</span></pre>
           </div>
         </div>
